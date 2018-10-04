@@ -288,27 +288,17 @@ converge, but their Cauchy product does not.
 \begin{proof}
 \begin{enumerate}[wide, label=(\roman*)]
 \item In the proof of Corollary, $f, g, h$ converge absolutely on $[0,1)$.
-Fix $x \in [0,1)$ and $\epsilon > 0$.
-Let $A_k = \sum_{n \leq k} a_nx^n$ and similar for $B_k, C_k$.
-Then there exists $p, q, r \in \mathbb{N}$ such that $|f(x) - A_n| < \epsilon$ for $n > p$ and similar for $g, h$.
-Since $A_n \rightarrow f(x), B_n \rightarrow g(x)$,and $C_n \rightarrow h(x)$, there is $m \in \mathbb{M}$ such that
-$| (h(x) - f(x)g(x)) - (C_n - A_nB_n) < \epsilon $ whenever $n > m$.
-Let $n = \max\{p,q,r,m\}$.
-Then,
-
-$$
-\begin{aligned}
-\left|h(x) - f(x)g(x)\right|
-&= |(h(x) - C_n) - (f(x)-A_n)(g(x)-B_n) + A_n g(x) + B_nf(x)
-\\ &\phantom{---} - 2A_nB_n - (C_n - A_nB_n)|\\
-&\leq \left|(h(x) - C_n)\right| + \left|(f(x)-A_n)(g(x)-B_n)\right| \\ &\phantom{--}+ A_n\left| g(x) - B_n \right| + B_n\left|f(x) - A_n\right| + |C_n - A_nB_n|\\
-&\leq \epsilon + \epsilon^2 + \epsilon (|A_n| + |B_n|) + \epsilon\\
-&\leq \epsilon + \epsilon^2 + \epsilon(|f(x)| + \epsilon + |g(x)| + \epsilon) + \epsilon
-% &\leq \left|(h(x) - C)\right| + \left|(f(x)-A)(g(x)-B)\right|\\
-% &= \sum_{n=0}^\infty c_nx^n - \sum_{n=0}^\infty a_nx^n \sum_{n=0}^\infty b_nx^n\\
-\end{aligned}
-$$
-Since $\epsilon$ is arbitrary positive number and $f(x), g(x)$ are constant, $h(x) = f(x)g(x)$.
+Fix $x \in [0,1)$ and prove $h(x) = f(x)g(x)$.
+By absolutely convergence, we can rearrange the summation of sequences.
+That is,
+$
+\sum_{n=0}^\infty c_nx^n
+= \sum_{n=0}^\infty \sum_{k=0}^n a_k b_{n-k} x^n
+= \sum_{n,m \geq 0} a_nb_m x^{n+m}
+= \sum_{n\geq 0, m \geq 0} (a_nx^n) b_mx^m
+= \sum_{n\geq0}a_nx^n \sum_{m\geq 0} b_mx^m
+= f(x)g(x).
+$
 
 \item
 Enough to show that $\sum_{k=0}^n a_kb_{n-k}$ does not converge to zero.
