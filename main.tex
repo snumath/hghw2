@@ -291,8 +291,8 @@ converge, but their Cauchy product does not.
 Fix $x \in [0,1)$ and $\epsilon > 0$.
 Let $A_k = \sum_{n \leq k} a_nx^n$ and similar for $B_k, C_k$.
 Then there exists $p, q, r \in \mathbb{N}$ such that $|f(x) - A_n| < \epsilon$ for $n > p$ and similar for $g, h$.
-Since $A_n \rightarrow A, B_n \rightarrow B$,and $C_n \rightarrow C$, there is $m \in \mathbb{M}$ such that
-$| (C - AB) - (C_n - A_nB_n) < \epsilon > 0$ whenever $n > m$.
+Since $A_n \rightarrow f(x), B_n \rightarrow g(x)$,and $C_n \rightarrow h(x)$, there is $m \in \mathbb{M}$ such that
+$| (h(x) - f(x)g(x)) - (C_n - A_nB_n) < \epsilon $ whenever $n > m$.
 Let $n = \max\{p,q,r,m\}$.
 Then,
 
