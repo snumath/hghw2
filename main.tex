@@ -1,0 +1,326 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{extramarks}
+\usepackage[inline]{enumitem}
+\usepackage{amsmath,amssymb,latexsym,amsfonts, amsthm}
+\usepackage[fontsize=13pt]{scrextend} % Font size
+% \usepackage{verbatim} % coding
+
+\usepackage[tracking]{microtype} % Font
+\usepackage[sc,osf]{mathpazo} % Font
+\usepackage{graphicx}
+\usepackage{lipsum}
+
+% \usepackage[all]{xy} % diagram
+
+% \usepackage{tikz} % diagram
+% \usepackage{tikz-cd} % diagram
+
+% \usetikzlibrary{arrows}
+% \usetikzlibrary{matrix}
+
+
+\makeatletter
+\renewenvironment{cases}[1][l]{\matrix@check\cases\env@cases{#1}}{\endarray\right.}
+\def\env@cases#1{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrace\def\arraystretch{1.2}%
+  \array{@{}#1@{\quad}l@{}}}
+\makeatother
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{2016-11988} % Top left header
+\chead{3341.202 Introduction to Mathematical Analysis} % Top center header
+\rhead{Lee Young Jae} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1}{}\nobreak
+}
+
+\newtheorem{lemma}{Lemma}
+
+
+\setcounter{secnumdepth}{0}
+
+
+\begin{document}
+\begin{titlepage}
+\centering
+{\scshape\LARGE Seoul National University \par}
+\vspace{1.5cm}
+{\huge\bfseries Introduction to\\Mathematical Analysis\par}
+\vspace{1cm}
+{\scshape\Large Assignment \# 2\par}
+
+\vspace{1cm}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=80mm]{pika.jpg}
+\end{figure}
+
+\vspace{1cm}
+
+\arrayrulewidth=1.2pt
+\begin{tabular}{p{2.5cm}p{2cm}}
+\centering
+& \\
+\cline{2-2}
+\vspace{-.73cm}
+My Score? & \\
+\end{tabular}
+
+
+
+\vfill
+\text{2016-11988}
+\vspace{.7cm}\par
+\textsc{\large Lee Young Jae}
+\vspace{.7cm}\par
+{\Large \today\par}
+\end{titlepage}
+
+\setlength{\parindent}{0cm}
+
+
+\begin{enumerate}[font = \Large\bfseries\itshape\space, leftmargin = 3mm, labelsep = 3mm]
+\item
+Let $R$ be the radius of convergence of the power series $f(z) = \sum_{n=0}^\infty c_n(z-a)^n$ with complex coefficients $c_n, a$.
+Show that
+$$
+R = \left(\limsup_{n\rightarrow\infty} \sqrt[n]{|c_n|}\right)^{-1},
+$$
+where $0^{-1} =\infty$ and $\infty^{-1} = 0$.
+
+\begin{proof}
+Assume $R \neq 0, \infty$.
+
+\begin{enumerate}[leftmargin = -\parindent]
+\item $R \leq \left(\limsup_{n\rightarrow\infty}\sqrt[n]{|c_n|}\right)^{-1}$\\
+Suppose $|z-a| = r > \left(\limsup_{n\rightarrow\infty} \sqrt[n]{|c_n|}\right)^{-1}$.
+Then, $f(z)$ diverges since $\lim_{n\rightarrow\infty} c_n(z-a)^n \neq 0$.
+Thus the radius of convergence is smaller than $\left(\limsup_{n\rightarrow\infty} \sqrt[n]{|c_n|}\right)^{-1}$.
+
+\item $R \geq \left(\limsup_{n\rightarrow\infty}\sqrt[n]{|c_n|}\right)^{-1}$\\
+Assume $f(z)$ diverges but $|z-a| = r < \left(\limsup_{n\rightarrow\infty}\sqrt[n]{|c_n|}\right)^{-1}$.
+Then $\sqrt[n]{c_n} < \frac{1}{r} - \epsilon$ all for finitely many $n$ for sufficiently small $\epsilon > 0$.
+Thus, $|f(z)| \leq \sum_{n=0}^\infty |c_n(z-a)^n| < \sum_{n=0}^\infty (1-r\epsilon)^n + M_\epsilon < \infty$ for some $M_\epsilon$.
+Hence $f(z)$ converges by comparison test.$\Rightarrow\!\Leftarrow$
+$\therefore R \geq \left(\limsup_{n\rightarrow\infty}\sqrt[n]{|c_n|}\right)^{-1}$
+\end{enumerate}
+
+For $R = 0^{-1} = \infty$, $f(z)$ converges as (2) for any $|z-a| \leq \infty$, i.e. any $z$.\\
+For $R = \infty^{-1} = 0$, $f(z)$ diverges as (1) for any $|z-a| \leq 0$, i.e. non except $z=a$.
+
+\end{proof}
+
+\item
+Consider the real power series
+$$f(x) = \sum_{n=1}^\infty \frac{(-1)^n}{4^nn^p}x^{2n}$$
+where $p\in \mathbb{R}$ is some constant.
+Determine its radius of convergence $R$.
+What can you say about convergence at $\pm R$ depending on the values of $p$?
+\begin{proof}
+We can say $f(x) = \sum_{n=0}^\infty c_n x^n$ with $c_n = \frac{(-1)^{n/2}}{2^n (n/2)^p}$ for even $n$, and $c_n = 0$ for odd $n$.
+By problem 1. $R = \left(\limsup_{n\rightarrow\infty}\sqrt[n]{|c_n|}\right)^{-1} = \limsup_{n\rightarrow\infty} \frac{1}{2} \times \frac{1}{(n/2)^{p/n}} = 2$
+since $\lim_{n\rightarrow\infty} \frac{1}{(n/2)^{p/n}} = 1$
+($\because \lim_{n\rightarrow\infty} \log(n^{1/n}) = \lim_{n\rightarrow\infty} \frac{1}{n} \log n = \lim_{n\rightarrow\infty}\frac{2}{n^2}\log n = \cdots = 0$).\\
+If $x = R$, then $f(x) =\sum_{n=1}^\infty \frac{(-1)^n}{4^nn^p}x^{2n} = \sum_{n=1}^\infty \frac{(-1)^n}{4^n n^p}2^{2n} = \sum_{n=1}^\infty \frac{(-1)^n}{n^p} < \infty$ if and only if $p > 0$ by alternating test.\\
+If $x = -R$, then $f(x) =\sum_{n=1}^\infty \frac{(-1)^n}{4^nn^p}x^{2n} = \sum_{n=1}^\infty \frac{1}{4^n n^p}2^{2n} < \infty$ if and only if $p > 1$ by integral test.
+\end{proof}
+
+\item
+Let $f :(-\pi, \pi) \rightarrow \mathbb{R}$ be defined by
+$$
+f(x) :=
+\begin{cases}[r]
+\frac{1}{\sin^2x} - \frac{1}{x^2} & \text{if } |x| \in (0,\pi),\\
+\frac{1}{3} & \text{if } x = 0.
+\end{cases}
+$$
+Show that $f \in C^\infty((-\pi,\pi))$, i.e. show that $f$ has derivatives of any order in $(-\pi, \pi)$.
+\begin{proof}
+Obviously, $f \in C^{\infty} ((\pi,\pi) \backslash \{0\})$.
+We only have to check that $f$ is infinitely differentiable at $x = 0$.
+
+
+\begin{lemma}
+If $f,g$ are analytic on $\Omega$ and $f$ is non-zero on $\Omega$, then $g/f$ is also anayltic.
+\begin{proof}
+Assume $0 \in \Omega$.
+Let $f = \sum a_nx^n$ and $g = \sum b_nx^n$.
+Let $h = g/f$. Then, $g = fh$.
+Define $(c_n)$ by $b_n = \sum_{k=0}^n a_k c_{n-k}$ inductively.
+In this case, $c_n$ is always defined since $a_0 = f(0) \neq 0$.
+Therefore, $h(x) = \sum_{n=0}^\infty c_n x^n$ pointwisely.
+\end{proof}
+\end{lemma}
+
+Let $g(x) = x^2 f(x) = \frac{x^2}{\sin^2x} - 1$ for $x \neq 0$.
+Since $\sin x = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}x^{2n+1}$ can be represented as power series, $\frac{\sin x}{x} = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}x^{2n}$ can be represented as power series.
+Moreover, $\frac{\sin x}{x}$ is nonzero on the some neighborhood of zero, since $\lim_{x\rightarrow 0}\frac{\sin x}{x} = 1$ and $\frac{\sin x}{x} = 0$ only if $x = 2\pi n$ except $x = 0$.
+By lemma, $\frac{x}{\sin x}$ is analytic, so is $\frac{x^2}{\sin^2x}$.
+Now, $g(x)$ is analytic.
+Note that $\lim_{x\rightarrow 0}g(x) = 1$ and $\lim_{x\rightarrow 0}g'(x) = \lim_{x\rightarrow 0} \frac{2x}{\sin^2 x} - \frac{x^2 \cos x}{\sin^3 x} = \lim_{x \rightarrow 0} \frac{2x\sin x - x^2 \cos x}{\sin^3 x} = 0$.
+Therefore, $g(x) = \sum_{n=2}^\infty c_n x^n$, and $f(x) = \frac{g(x)}{x^2} = \sum_{n=0}^\infty c_{n+2} x^n$ is analytic.
+\end{proof}
+
+\item
+Let $f :\mathbb{R} \rightarrow \mathbb{R}$ be defined by
+$$
+f(x):=
+\begin{cases}[r]
+e^{-\frac{1}{x^2}} & \text{if } x \neq 0,\\
+0 & \text{if } x = 0.
+\end{cases}
+$$
+Show that $f \in C^\infty(\mathbb{R})$ and that $f^{(n)}(0) = 0$ for any $n \geq 0$.
+\textit{Hint:} Show by indeuction, that there exist polynomials $p_n, n \geq 0$, with
+$$
+f^{(n)}(x):=
+\begin{cases}[r]
+p_n(\frac{1}{x})e^{-\frac{1}{x^2}} & \text{if } x \neq 0,\\
+0 & \text{if } x = 0.
+\end{cases}
+$$
+
+\begin{proof}
+\begin{lemma}
+Let $p$ be a polynomial. Then, $\lim_{x\rightarrow 0} p(\frac{1}{x}) e^{-\frac{1}{x^2}} = 0$.
+\begin{proof}
+Let $p(x) = \sum_{k=0}^n a_k x^k$.
+Then,
+$$
+\begin{aligned}
+\left|\lim_{x \rightarrow 0 } p(\frac{1}{x}) e^{-\frac{1}{x^2}}\right|
+&= \left|\lim_{x \rightarrow 0} \sum_{k=0}^n a_k x^{n-k} \frac{e^{-\frac{1}{x^2}}}{x^n}\right|\\
+&\leq M \left|\lim_{x\rightarrow 0} \frac{e^{-\frac{1}{x^2}}}{x^n}\right|\\
+&= M \left|\exp\left[-\frac{1}{x^2} - n\log x\right]\right|\\
+&= 0.
+\end{aligned}
+$$
+\end{proof}
+\end{lemma}
+
+\textit{Claim:} For $n$ there exists polynomial $p_n$ such that $f^{(n)}(x) = p_n(\frac{1}{x}) e^{-\frac{1}{x^2}}$ if $x \neq 0$, and $f^{(n)}(x) = 0$ if $x = 0$.\\
+First, the claim is true for $n = 0$.
+If the claim is true for some $n$, i.e. $f^{(n)}(x) = p_n(\frac{1}{x}) e^{-\frac{1}{x^2}}$, then
+$f^{(n+1)}(x) = \frac{2}{x^3}p_n(\frac{1}{x}) - \frac{1}{x^2}p_n(\frac{1}{x}) e^{-\frac{1}{x^2}} = p_{n+1}(x) e^{-\frac{1}{x^2}}$ for $x \neq 0$.
+By lemma, $\lim_{x\rightarrow 0}f^{(n+1)}(x) = 0$.
+Moreover, $f^{(n+1)}(0) = \lim_{x\rightarrow 0} \frac{f^{(n)}(x) - f^{(n)}(0)}{x - 0} = \lim_{x\rightarrow 0} \frac{f^{(n)}(x)}{x} = \lim_{x\rightarrow 0} \frac{p_n(\frac{1}{x})}{x} e^{-\frac{1}{x^2}} = 0$ by lemma.
+Therefore, $f^{(n+1)}$ is continuous.
+By induction hypothesis, $f \in C^\infty (\mathbb{R})$ and $f^{(n)}(0) = 0$ for any $n \geq 0$.
+\end{proof}
+
+\item
+\begin{enumerate}[label=(\roman*)]
+\item Show that the converse of Abel's Theorem is wrong:
+\textit{Hint:} You may consider the power series
+$$
+f(x) = \sum_{n=0}^\infty (-1)^n x^n.
+$$
+
+\item
+Show the following variant of Abel's Theorem:
+Let $A(x) = \sum_{n=0}^\infty a_nx^n$ be a power series with radius of convergence $R = 1$.
+Then:
+$$
+\sum_{n=0}^\infty a_n = \infty \Rightarrow \lim_{x\rightarrow 1-} A(x) = \infty.
+$$
+\end{enumerate}
+
+\begin{proof}
+\leavevmode
+\begin{enumerate}[label = (\roman*)]
+\item
+$\lim_{x \rightarrow -1+} f(x) = \lim_{x\rightarrow -1+} \frac{1}{1+x} = \infty$ and $f(-1) = \sum_{n=0}^\infty 1 = \infty$,
+but $f(-1)$ does not converge.
+
+\item
+Let $s_n = \sum_{k=0}^n a_k$ and $G(x) = (1-x) \sum_{k=0}^\infty s_k x^k = \sum_{k=0}^\infty a_k x^k$.
+Given $\epsilon > 0$, pick $n$ large enough so that $|s_k| > \epsilon$ for all $k \geq n$ and note that
+$$\left| (1-x) \sum_{k=n}^\infty s_k x^k \right| \geq \epsilon (1-x)\sum_{k=n}^\infty x^k = \epsilon (1-x) \frac{x^n}{1-x} = \epsilon x^n$$
+when $0 < x < 1$.
+Moreover, $|(1-x)\sum_{k=0}^{n-1} s_kx^k| < \epsilon/2$ whenever $x$ is sufficiently close to $1$,
+so that $|G(x)| > (x^n -1/2)\epsilon$ for any $\epsilon > 0$ and $x$ is sufficiently close to $1$.
+Hence $\lim_{x\rightarrow 1-}G(x) = \lim_{x\rightarrow 1-}A(x) = \infty$.
+
+
+\end{enumerate}
+\end{proof}
+
+\item
+\begin{enumerate}[label=(\roman*)]
+\item
+Show that $f(x)g(x) = h(x), x \in [0,1)$ at page 6.1.11 in the proof of Corollary 6.1.16 of the lecture.
+
+\item
+Show that the series $\sum_{n=0}^\infty a_n$ and $\sum_{n=0}^\infty b_n$ where
+$$a_n = b_n = \frac{(-1)^{n+1}}{\sqrt{n+1}}$$
+converge, but their Cauchy product does not.
+\end{enumerate}
+
+\begin{proof}
+\begin{enumerate}[wide, label=(\roman*)]
+\item In the proof of Corollary, $f, g, h$ converge absolutely on $[0,1)$.
+Fix $x \in [0,1)$ and $\epsilon > 0$.
+Let $A_k = \sum_{n \leq k} a_nx^n$ and similar for $B_k, C_k$.
+Then there exists $p, q, r \in \mathbb{N}$ such that $|f(x) - A_n| < \epsilon$ for $n > p$ and similar for $g, h$.
+Let $n = \max\{p,q,r\}$.
+Then,
+$$
+\begin{aligned}
+\left|h(x) - f(x)g(x)\right|
+&= \left|(h(x) - C_n) - (f(x)-A_n)(g(x)-B_n) + A_n g(x) + B_nf(x) - 2A_nB_n\right|\\
+&\leq \left|(h(x) - C_n)\right| + \left|(f(x)-A_n)(g(x)-B_n)\right| \\ &\phantom{--}+ A_p\left| g(x) - B_q \right| + B_q\left|f(x) - A_p\right|\\
+&\leq \epsilon + \epsilon^2 + \epsilon (|A_n| + |B_n|)\\
+&\leq \epsilon + \epsilon^2 + \epsilon(|f(x)| + \epsilon + |g(x)| + \epsilon)
+% &\leq \left|(h(x) - C)\right| + \left|(f(x)-A)(g(x)-B)\right|\\
+% &= \sum_{n=0}^\infty c_nx^n - \sum_{n=0}^\infty a_nx^n \sum_{n=0}^\infty b_nx^n\\
+\end{aligned}
+$$
+Since $\epsilon$ is arbitrary positive number and $f(x), g(x)$ are constant, $h(x) = f(x)g(x)$.
+
+\item
+Enough to show that $\sum_{k=0}^n a_kb_{n-k}$ does not converge to zero.
+$$
+\begin{aligned}
+\lim_{n\rightarrow \infty} |\sum_{k=0}^n a_kb_{n-k}|
+&= \lim_{n\rightarrow \infty} \sum_{k=0}^n \frac{1}{\sqrt{k+1}\sqrt{n-k+1}}\\
+&\geq \lim_{n\rightarrow\infty} \sum_{k=0}^n \frac{1}{(k+1) + (n-k+1)}\\
+&= \lim_{n\rightarrow \infty} \sum_{k=0}^n \frac{1}{n+2}\\
+&=1.
+\end{aligned}
+$$
+Thus it diverges.
+
+\end{enumerate}
+\end{proof}
+
+\end{enumerate}
+\end{document}
