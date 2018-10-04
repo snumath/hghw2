@@ -150,8 +150,7 @@ We can say $f(x) = \sum_{n=0}^\infty c_n x^n$ with $c_n = \frac{(-1)^{n/2}}{2^n 
 By problem 1. $R = \left(\limsup_{n\rightarrow\infty}\sqrt[n]{|c_n|}\right)^{-1} = \limsup_{n\rightarrow\infty} \frac{1}{2} \times \frac{1}{(n/2)^{p/n}} = 2$
 since $\lim_{n\rightarrow\infty} \frac{1}{(n/2)^{p/n}} = 1$
 ($\because \lim_{n\rightarrow\infty} \log(n^{1/n}) = \lim_{n\rightarrow\infty} \frac{1}{n} \log n = \lim_{n\rightarrow\infty}\frac{2}{n^2}\log n = \cdots = 0$).\\
-If $x = R$, then $f(x) =\sum_{n=1}^\infty \frac{(-1)^n}{4^nn^p}x^{2n} = \sum_{n=1}^\infty \frac{(-1)^n}{4^n n^p}2^{2n} = \sum_{n=1}^\infty \frac{(-1)^n}{n^p} < \infty$ if and only if $p > 0$ by alternating test.\\
-If $x = -R$, then $f(x) =\sum_{n=1}^\infty \frac{(-1)^n}{4^nn^p}x^{2n} = \sum_{n=1}^\infty \frac{1}{4^n n^p}2^{2n} < \infty$ if and only if $p > 1$ by integral test.
+If $x \pm R$, then $f(x) =\sum_{n=1}^\infty \frac{(-1)^n}{4^nn^p}x^{2n} = \sum_{n=1}^\infty \frac{(-1)^n}{4^n n^p}2^{2n} = \sum_{n=1}^\infty \frac{(-1)^n}{n^p} < \infty$ if and only if $p > 0$ by alternating test.\\
 \end{proof}
 
 \item
@@ -183,11 +182,12 @@ Therefore, $h(x) = \sum_{n=0}^\infty c_n x^n$ pointwisely.
 
 Let $g(x) = x^2 f(x) = \frac{x^2}{\sin^2x} - 1$ for $x \neq 0$.
 Since $\sin x = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}x^{2n+1}$ can be represented as power series, $\frac{\sin x}{x} = \sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}x^{2n}$ can be represented as power series.
-Moreover, $\frac{\sin x}{x}$ is nonzero on the some neighborhood of zero, since $\lim_{x\rightarrow 0}\frac{\sin x}{x} = 1$ and $\frac{\sin x}{x} = 0$ only if $x = 2\pi n$ except $x = 0$.
-By lemma, $\frac{x}{\sin x}$ is analytic, so is $\frac{x^2}{\sin^2x}$.
+Let $h(x) = \frac{\sin x}{x}$ if $x \neq 0$ and $h(0) = 1$.
+Then, $h(x)$ is nonzero on the some neighborhood of zero, since $\lim_{x\rightarrow 0}\frac{\sin x}{x} = 1$ and $h(x) = 0$ only if $x = 2\pi n$.
+By lemma, $\frac{1}{h(x)}$ is analytic, so is $\frac{1}{h(x)^2}$.
 Now, $g(x)$ is analytic.
 Note that $\lim_{x\rightarrow 0}g(x) = 1$ and $\lim_{x\rightarrow 0}g'(x) = \lim_{x\rightarrow 0} \frac{2x}{\sin^2 x} - \frac{x^2 \cos x}{\sin^3 x} = \lim_{x \rightarrow 0} \frac{2x\sin x - x^2 \cos x}{\sin^3 x} = 0$.
-Therefore, $g(x) = \sum_{n=2}^\infty c_n x^n$, and $f(x) = \frac{g(x)}{x^2} = \sum_{n=0}^\infty c_{n+2} x^n$ is analytic.
+Therefore, $g(x) = \sum_{n=2}^\infty c_n x^n$, and $f(x) = \frac{g(x)}{x^2} = \sum_{n=0}^\infty c_{n+2} x^n$ is analytic, hence smooth.
 \end{proof}
 
 \item
