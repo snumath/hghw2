@@ -264,7 +264,7 @@ but $f(-1)$ does not converge.
 \item
 Let $s_n = \sum_{k=0}^n a_k$ and $G(x) = (1-x) \sum_{k=0}^\infty s_k x^k = \sum_{k=0}^\infty a_k x^k$.
 Given $\epsilon > 0$, pick $n$ large enough so that $s_k > \epsilon$ for all $k \geq n$ and note that
-$$\left| (1-x) \sum_{k=n}^\infty s_k x^k \right| \geq \epsilon (1-x)\sum_{k=n}^\infty x^k = \epsilon (1-x) \frac{x^n}{1-x} = \epsilon x^n$$
+$$ (1-x) \sum_{k=n}^\infty s_k x^k \geq \epsilon (1-x)\sum_{k=n}^\infty x^k = \epsilon (1-x) \frac{x^n}{1-x} = \epsilon x^n$$
 when $0 < x < 1$.
 Moreover, $|(1-x)\sum_{k=0}^{n-1} s_kx^k| < 1$ whenever $x$ is sufficiently close to $1$,
 so that $G(x) > x^n\epsilon - 1$ for any $\epsilon > 0$ where $x$ is sufficiently close to $1$.
